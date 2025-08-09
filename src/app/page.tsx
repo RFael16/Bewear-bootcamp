@@ -1,12 +1,11 @@
+import { Header } from "@/components/common/header";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
 const Home = () => {
   return (
-    <div>
-      <h1>Bootcamp</h1>
-      <Button className="m-1">Click me</Button>
-    </div>
+    <>
+      <Header />
+    </>
   );
 };
 
