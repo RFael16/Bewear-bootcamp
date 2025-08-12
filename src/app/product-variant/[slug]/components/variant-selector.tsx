@@ -1,7 +1,5 @@
-"use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useParams } from "next/navigation";
 
 import { productVariantTable } from "@/db/schema";
 
@@ -10,8 +8,10 @@ interface VariantSelectorProps {
   variants: (typeof productVariantTable.$inferSelect)[];
 }
 
-const VariantSelector = ({ variants }: VariantSelectorProps) => {
-  const { slug } = useParams();
+const VariantSelector = ({
+  selectedVariantSlug,
+  variants,
+}: VariantSelectorProps) => {
   return (
     <div className="flex items-center gap-4">
       {variants.map((variant) => (
@@ -19,7 +19,9 @@ const VariantSelector = ({ variants }: VariantSelectorProps) => {
           href={`/product-variant/${variant.slug}`}
           key={variant.id}
           className={
-            slug === variant.slug ? "border-primary rounded-xl border-2" : ""
+            selectedVariantSlug === variant.slug
+              ? "border-primary rounded-xl border-2"
+              : ""
           }
         >
           <Image
